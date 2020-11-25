@@ -9,6 +9,24 @@ var config = require('./config')
 var StringDecoder = require('string_decoder').StringDecoder;
 var https = require('https')
 var fs = require('fs')
+var _data = require('./lib/data');
+
+// testing
+_data.create('test','newFile',{'foo':'bar'},function(err){
+    console.log('this was the err',err)
+})
+
+// _data.read('test', 'newFile',function(err,data){
+//     console.log("this was the err",err,"and this was")
+// })
+
+// _data.update('test','newFile',{'fizz':'buzz'},function(err){
+//     console.log("this was the err",err)
+// })
+
+// _data.delete('test','newFile',function(err){
+//     console.log('this was the error',err)
+// })
 
 // Instantiate the https server
 var httpServer = http.createServer(function(req, res){
