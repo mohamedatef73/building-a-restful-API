@@ -13,7 +13,7 @@ var handlers = require('./lib/handlers')
 var config = require('./lib/config')
 var helpers = require('./lib/helpers')
 
-// testing
+//testing
 // _data.create('test','newFile',{'foo':'bar'},function(err){
 //     console.log('this was the err',err)
 // })
@@ -87,7 +87,6 @@ var unifiedServer = function(req,res){
     
             //choose the handler this request should go to , if one is not foumd use the notfound handler
             var chosenHandler = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : handlers.notfound
-    
             // construct the data object to send to the handler
             var data = {
                 'trimmedPath' : trimmedPath,
@@ -98,10 +97,11 @@ var unifiedServer = function(req,res){
             }
     
            // router the request specified to handler
+
            chosenHandler(data,function(statusCode,payload){
-               // use the status code called back by the handler , or default to 200
+            // use the status code called back by the handler , or default to 200
                statusCode = typeof(statusCode) == 'number' ? statusCode : 200
-               
+
                // use the payload called back the handler, or default to empty object
     
                payload = typeof(payload) == 'object' ? payload : {}
@@ -129,5 +129,6 @@ var unifiedServer = function(req,res){
 //define a request handler
 var router = {
     'ping' : handlers.ping,
-    'users' : handlers.users
+    'users' : handlers.users,
+    'tokens' : handlers.tokens
 }
